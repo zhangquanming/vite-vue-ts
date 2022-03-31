@@ -63,27 +63,27 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es2021: true,
+    es2021: true
   },
-  parser: "vue-eslint-parser",
+  parser: 'vue-eslint-parser',
   extends: [
-    "eslint:recommended",
-    "plugin:vue/vue3-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
+    'eslint:recommended',
+    'plugin:vue/vue3-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
     // eslint-config-prettier 的缩写
-    "prettier",
+    'prettier'
   ],
   parserOptions: {
     ecmaVersion: 12,
-    parser: "@typescript-eslint/parser",
-    sourceType: "module",
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module',
     ecmaFeatures: {
-      jsx: true,
-    },
+      jsx: true
+    }
   },
   // eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
-  plugins: ["vue", "@typescript-eslint", "prettier"],
+  plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
     // "@typescript-eslint/ban-ts-ignore": "off",
     // "@typescript-eslint/no-unused-vars": "off",
@@ -98,12 +98,12 @@ module.exports = {
     // "@typescript-eslint/explicit-module-boundary-types": "off",
     // "no-var": "error",
     // // 结尾去分号
-    "prettier/prettier": [
-      "error",
+    'prettier/prettier': [
+      'error',
       {
-        semi: false,
-      },
-    ],
+        semi: false
+      }
+    ]
     // // 禁止出现console
     // "no-console": "warn",
     // // 禁用debugger
@@ -213,11 +213,11 @@ module.exports = {
     // "no-async-promise-executor": "warn",
   },
   globals: {
-    defineProps: "readonly",
-    defineEmits: "readonly",
-    defineExpose: "readonly",
-    withDefaults: "readonly",
-  },
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    defineExpose: 'readonly',
+    withDefaults: 'readonly'
+  }
 }
 ```
 
@@ -243,13 +243,13 @@ module.exports = {
   semi: false,
   overrides: [
     {
-      files: "*.json",
+      files: '*.json',
       options: {
-        printWidth: 200,
-      },
-    },
+        printWidth: 200
+      }
+    }
   ],
-  arrowParens: "always",
+  arrowParens: 'always'
 }
 ```
 
