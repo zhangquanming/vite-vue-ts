@@ -98,7 +98,12 @@ module.exports = {
     // "@typescript-eslint/explicit-module-boundary-types": "off",
     // "no-var": "error",
     // // 结尾去分号
-    "prettier/prettier": ["error", { semi: false }],
+    "prettier/prettier": [
+      "error",
+      {
+        semi: false,
+      },
+    ],
     // // 禁止出现console
     // "no-console": "warn",
     // // 禁用debugger
@@ -275,3 +280,9 @@ yarn lint
 # prettier 自动格式化
 yarn prettier
 ```
+
+### 配置文件引用别名 alias
+
+## 参考文献
+
+[Vite2 + Vue3 + TypeScript + Pinia 搭建一套企业级的开发脚手架](https://juejin.cn/post/7036745610954801166)
