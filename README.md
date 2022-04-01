@@ -63,7 +63,7 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es2021: true
+    es2021: true,
   },
   parser: 'vue-eslint-parser',
   extends: [
@@ -72,15 +72,15 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     // eslint-config-prettier 的缩写
-    'prettier'
+    'prettier',
   ],
   parserOptions: {
     ecmaVersion: 12,
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   // eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
   plugins: ['vue', '@typescript-eslint', 'prettier'],
@@ -101,9 +101,9 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        semi: false
-      }
-    ]
+        semi: false,
+      },
+    ],
     // // 禁止出现console
     // "no-console": "warn",
     // // 禁用debugger
@@ -216,8 +216,8 @@ module.exports = {
     defineProps: 'readonly',
     defineEmits: 'readonly',
     defineExpose: 'readonly',
-    withDefaults: 'readonly'
-  }
+    withDefaults: 'readonly',
+  },
 }
 ```
 
@@ -229,27 +229,32 @@ node_modules
 dist
 ```
 
-### 项目下新建 .prettier.js
+### 项目下新建 .prettierrc.js
 
 > 配置 prettier 格式化规则:
 
 ```js
 module.exports = {
   tabWidth: 2,
-  jsxSingleQuote: true,
-  jsxBracketSameLine: true,
-  printWidth: 100,
-  singleQuote: true,
   semi: false,
-  overrides: [
-    {
-      files: '*.json',
-      options: {
-        printWidth: 200
-      }
-    }
-  ],
-  arrowParens: 'always'
+  arrowParens: 'always',
+  printWidth: 100,
+  tabWidth: 2,
+  useTabs: false,
+  semi: false, // 未尾逗号
+  vueIndentScriptAndStyle: true,
+  singleQuote: true, // 单引号
+  quoteProps: 'as-needed',
+  bracketSpacing: true,
+  trailingComma: 'none', // 未尾分号
+  jsxBracketSameLine: false,
+  jsxSingleQuote: false,
+  arrowParens: 'always',
+  insertPragma: false,
+  requirePragma: false,
+  proseWrap: 'never',
+  htmlWhitespaceSensitivity: 'strict',
+  endOfLine: 'lf',
 }
 ```
 
