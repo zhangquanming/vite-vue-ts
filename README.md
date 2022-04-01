@@ -288,6 +288,52 @@ yarn prettier
 
 ### 配置文件引用别名 alias
 
+> 直接修改 vite.config.ts 文件配置:
+
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import * as path from 'path'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+})
+```
+
+> ts：找不到模块“path”或其相应的类型声明，安装 node 类型文件
+
+```shell
+yarn add @types/node —D
+```
+
+> 修改 tsconfig.json
+
+```js
+{
+  "compilerOptions": {
+    // ...
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
+
+## 配置 css 预处理器 scss
+
+### 安装
+
+```shell
+yarn add dart-sass --dev
+yarn add sass --dev
+```
+
 ## 参考文献
 
 [Vite2 + Vue3 + TypeScript + Pinia 搭建一套企业级的开发脚手架](https://juejin.cn/post/7036745610954801166)
