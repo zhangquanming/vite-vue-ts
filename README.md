@@ -2,13 +2,13 @@
 
 ## 全局安装
 
-```shell
+```bash
 npm i -g create-vite-app
 ```
 
 ## 创建项目
 
-```shell
+```bash
 # npm 6.x
 npm init @vitejs/app vite_vue3_ts --template
 
@@ -23,7 +23,7 @@ yarn create @vitejs/app vite_vue3_ts --template
 
 ## Eslint 支持
 
-```shell
+```bash
 # eslint 安装
 yarn add eslint --dev
 
@@ -40,13 +40,13 @@ yarn add @typescript-eslint/parser --dev
 
 注意: 如果 eslint 安装报错,可以尝试运行
 
-```shell
+```bash
 yarn config set ignore-engines true
 ```
 
 > 解决 ESLint 中的样式规范和 prettier 中样式规范的冲突，以 prettier 的样式规范为准，使 ESLint 中的样式规范自动失效。
 
-```shell
+```bash
 # 安装 prettier
 yarn add prettier --dev
 # 安装插件 eslint-config-prettier
@@ -223,7 +223,7 @@ module.exports = {
 
 ### 项目下新建 .eslintignore
 
-```shell
+```bash
 # eslint 忽略检查 (根据项目需要自行添加)
 node_modules
 dist
@@ -260,7 +260,7 @@ module.exports = {
 
 ### 项目下新建 .prettierignore
 
-```shell
+```bash
 # 忽略格式化文件 (根据项目需要自行添加)
 node_modules
 dist
@@ -279,7 +279,7 @@ dist
 
 上面配置完成后，可以运行以下命令测试下代码检查个格式化效果:
 
-```shell
+```bash
 # eslint 检查
 yarn lint
 # prettier 自动格式化
@@ -308,7 +308,7 @@ export default defineConfig({
 
 > ts：找不到模块“path”或其相应的类型声明，安装 node 类型文件
 
-```shell
+```bash
 yarn add @types/node —D
 ```
 
@@ -329,7 +329,7 @@ yarn add @types/node —D
 
 ### 安装
 
-```shell
+```bash
 yarn add dart-sass --dev
 yarn add sass --dev
 ```
@@ -361,6 +361,78 @@ color: $test-color;
 ```
 
 ## 路由
+
+```bash
+# 安装路由
+yarn add vue-router@4
+```
+
+在 `src` 文件下新增 `router` 文件夹 => `index.ts` 文件
+
+```ts
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+
+const routes: RouteRecordRaw[] = [
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('@/pages/home/Home.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/pages/login/Login.vue') // 注意这里要带上 文件后缀.vue
+  }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+export default router
+```
+
+修改入口文件 `main.ts` : 
+
+```ts
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from '@/router/index'
+
+const app = createApp(App)
+app.use(router).mount('#app')
+```
+
+`vue-router4.x` 支持 `typescript`，配置路由的类型是 `RouteRecordRaw`，这里 `meta` 可以让我们有更多的发挥空间，这里提供一些参考：
+
+- `title:string`; 页面标题，通常必选。
+- `icon?:string`; 图标，一般配合菜单使用。
+- `auth?:boolean`; 是否需要登录权限。
+- `ignoreAuth?:boolean`; 是否忽略权限。
+- `roles?:RoleEnum[]`; 可以访问的角色
+- `keepAlive?:boolean`; 是否开启页面缓存
+- `hideMenu?:boolean`; 有些路由我们并不想在菜单中显示，比如某些编辑页面。
+- `order?:number`; 菜单排序。
+- `frameUrl?:string`; 嵌套外链。
+
+
+
+
+## 封装请求
+
+### 安装
+
+```bash
+# 安装 axios
+yarn add axios
+# 安装 nprogress 用于请求 loading
+# 也可以根据项目需求自定义其它 loading
+yarn add nprogress
+# 类型声明，或者添加一个包含 `declare module 'nprogress'
+yarn add @types/nprogress --dev
+
+```
 
 ## 参考文献
 
