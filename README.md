@@ -334,6 +334,34 @@ yarn add dart-sass --dev
 yarn add sass --dev
 ```
 
+### 配置全局 scss 样式文件
+
+新建文件 `src/assets/styles/common.scss`
+
+```scss
+$test-color: red;
+```
+
+全局注入，配置 Vite:
+
+```json
+css:{
+    preprocessorOptions:{
+      scss:{
+        additionalData:'@import "@/assets/style/mian.scss";'
+      }
+    }
+  },
+```
+
+然后不需要任何引入可以直接使用全局 scss 定义的变量。
+
+```scss
+color: $test-color;
+```
+
+## 路由
+
 ## 参考文献
 
 [Vite2 + Vue3 + TypeScript + Pinia 搭建一套企业级的开发脚手架](https://juejin.cn/post/7036745610954801166)
