@@ -564,6 +564,97 @@ export interface ILoginApi {
 }
 ```
 
+## 状态管理 pinia
+
+> 由于 vuex 4 对 typescript 的支持让人感到难过，所以状态管理弃用了 vuex 而采取了 pinia. pinia 的作者是 Vue 核心团队成员，尤大好像说 pinia 可能会代替 vuex。
+
+## 环境变量
+
+> vite 提供了两种模式：具有开发服务器的开发模式（development）和生产模式（production）
+
+`.env.development`
+```env
+NODE_ENV=development
+VITE_APP_WEB_URL= 'YOUR WEB URL'
+```
+
+ `.env.production`
+```env
+NODE_ENV=production
+VITE_APP_WEB_URL= 'YOUR WEB URL'
+```
+
+组件中使用：
+```js
+console.log(import.meta.env.VITE_APP_WEB_URL)
+```
+
+配置 `package.json`:
+
+> 打包区分开发环境和生产环境
+
+```json
+"build:dev": "vite build --mode development",
+"build:pro": "vite build --mode production",
+```
+
+## Vite 常用基础配置
+
+`运行` `代理` 和 `打包` 配置
+
+```js
+server: {
+    host: '0.0.0.0',
+    port: 3000,
+    open: true,
+    https: false,
+    proxy: {}
+},
+```
+
+生产环境去除 `console` 、`debugger`
+
+```js
+build:{
+  // ...
+  terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+  }
+}
+```
+
+### 生产环境生成 .gz 文件
+
+> 开启 `gzip` 可以极大的压缩静态资源，对页面加载的速度起到了显著的作用。
+
+使用 `vite-plugin-compression` 可以 `gzip` 或 `brotli` 的方式来压缩资源，这一步需要服务器端的配合，`vite` 只能帮你打包出 `.gz` 文件。此插件使用简单，你甚至无需配置参数，引入即可。
+
+```bash
+# 安装
+yarn add --dev vite-plugin-compression
+```
+
+plugins 中添加：
+
+```js
+import viteCompression from 'vite-plugin-compression'
+
+// gzip压缩 生产环境生成 .gz 文件
+plugins: [
+  // ...
+  viteCompression({
+    verbose: true,
+    disable: false,
+    threshold: 10240,
+    algorithm: 'gzip',
+    ext: '.gz',
+  }),
+]
+```
+
 ## 参考文献
 
 [Vite2 + Vue3 + TypeScript + Pinia 搭建一套企业级的开发脚手架](https://juejin.cn/post/7036745610954801166)
